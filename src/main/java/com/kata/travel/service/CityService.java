@@ -38,8 +38,6 @@ public class CityService {
 		{
 			City originalCity = listOfCity.get(listOfCity.indexOf(city));
 			originalCity.setVisited(city.getVisited());
-			//listOfCity.remove(city);
-			//listOfCity.add(city);
 		}
 	
 		return city;
