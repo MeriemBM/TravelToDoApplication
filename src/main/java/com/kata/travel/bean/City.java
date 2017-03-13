@@ -90,6 +90,11 @@ public class City implements Serializable {
 		else
 			this.visited=visited;
 	}
+	public City(String city, String country, List<String> attractions) {
+	        this.city = city;
+		this.country = country;
+		this.attractions = attractions;
+	}
 	public City(String city, String country) {
 	    this.city = city;
 		this.country = country;

@@ -2,45 +2,44 @@ package com.kata.travel.service;
 
 import java.util.List;
 
-import com.kata.travel.ConfigData;
 import com.kata.travel.bean.City;
 
 
 public class CityService {
 
-
-	public CityService() {
-		super();
+	private List<City> listCity;
+	
+	public CityService(List<City> listCity) {
+		this.listCity=listCity;		
 	}
 
 	public List<City> getCityList()
 	{
-		return ConfigData.getInstance().getCityList();
+		return listCity;
 	}
 
 	public boolean addCity(City city)
 	{
 		// Basic validation would be to check if the city exists in the city collection
 		// If no then add a new item to the list , otherwise return an error message
-		List<City> listOfCity = ConfigData.getInstance().getCityList();
 
-		if(listOfCity.contains(city))
+		if(listCity.contains(city))
 			return false;
 		else
-			listOfCity.add(city); 
+			listCity.add(city); 
 		return true;
 	}
 
-	public City updateCity(City city) {
+	public City updateCity(City city) throws IllegalArgumentException {
 
-		List<City> listOfCity = ConfigData.getInstance().getCityList();
-		if(listOfCity.contains(city))
+		if(listCity.contains(city))
 		{
-			City originalCity = listOfCity.get(listOfCity.indexOf(city));
+			City originalCity = listCity.get(listCity.indexOf(city));
 			originalCity.setVisited(city.getVisited());
+			return city;
 		}
 	
-		return city;
+		throw new IllegalArgumentException();
 	}
 
 }
